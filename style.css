@@ -46,35 +46,22 @@ header {
   transition: all .40s ease;
 }
 
-.logo { /* Diperbarui untuk logo teks */
+.logo {
   color: var(--text-color);
-  font-size: 2rem; /* Sesuaikan ukuran font jika perlu */
+  font-size: 2rem;
   font-weight: 700;
   transition: color 0.4s ease, transform 0.4s ease;
   text-decoration: none;
   line-height: 1;
   display: flex;
   align-items: center;
-  height: 100%; /* Penting untuk vertical alignment */
+  height: 100%;
 }
 
 .logo:hover {
   color: var(--main-color);
   transform: scale(1.05);
 }
-
-/* Hapus atau komentari aturan .logo img dan .logo img:hover */
-/*
-.logo img {
-  width: 10rem;
-  height: auto;
-  transition: all .40s ease;
-}
-
-.logo img:hover {
-  width: 11rem;
-}
-*/
 
 .navbar {
   display: flex;
@@ -281,19 +268,12 @@ section {
 }
 
 .projects-content {
-  max-width: 1200px; /* Lebar maksimum container projects */
-  margin: 0 auto; /* Pusatkan container */
-  display: grid; /* Menggunakan Grid untuk tata letak sejajar */
-  /* Untuk 4 proyek sejajar di max-width 1200px,
-     masing-masing proyek (320px) + gap (2rem = 32px)
-     (4 * 320) + (3 * 32) = 1280 + 96 = 1376px.
-     Ini akan melebihi 1200px, jadi 4 proyek tidak akan muat dalam 1 baris di 1200px.
-     Kita akan sesuaikan minmax agar bisa 4 atau 3 per baris.
-     Jika 4 proyek mutlak harus 1 baris, max-width 1200px harus ditambah.
-     Asumsi: Anda ingin 4 proyek per baris saat layar CUKUP lebar. */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Sesuaikan min-width card */
-  gap: 2rem; /* Jarak antar card */
-  align-items: stretch; /* PENTING! Membuat semua card di baris yang sama memiliki tinggi yang sama */
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
 }
 
 /* Individual Project Card (proj-item) */
@@ -304,12 +284,11 @@ section {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   color: var(--text-color);
-  
-  display: flex; /* Menggunakan flexbox untuk konten di dalam card */
-  flex-direction: column; /* Konten disusun dari atas ke bawah */
-  
-  /* Set minimum height to ensure uniformity, adjust as needed */
-  min-height: 520px; /* Berdasarkan gambar yang Anda berikan, ini cukup baik */
+
+  display: flex;
+  flex-direction: column;
+
+  min-height: 520px;
 }
 
 .proj-item:hover {
@@ -319,8 +298,8 @@ section {
 
 .proj-item .project-main-image {
   width: 100%;
-  height: 200px; /* Fixed height for consistent card image size */
-  object-fit: cover; /* Crop image to fill */
+  height: 200px;
+  object-fit: cover;
   border-radius: 0.5rem;
   margin-bottom: 15px;
   cursor: pointer;
@@ -352,38 +331,38 @@ section {
   margin-bottom: 10px;
 }
 
-/* "Read More" Description */
+/* --- Read More Description (Perbaikan) --- */
 .project-description {
-    max-height: 96px; /* Approx 4 lines, adjust based on your --p-font and line-height */
+    max-height: 96px; /* Tinggi awal deskripsi yang terlihat (misal 4 baris) */
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-bottom: 10px; /* Space between description and button */
+    transition: max-height 0.3s ease-out; /* Animasi saat berekspansi/berkontraksi */
+    margin-bottom: 10px; /* Jarak antara deskripsi dan tombol */
     position: relative;
     color: var(--second-color);
-    flex-grow: 1; /* Allows description area to expand and push button down */
+    flex-grow: 1; /* Agar area deskripsi bisa fleksibel dan tombol terdorong ke bawah */
 }
 
-/* Optional: Add a fade effect at the bottom of the description */
+/* Efek fade di bagian bawah deskripsi saat belum expanded */
 .project-description::after {
     content: "";
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 30px; /* Height of the fade effect */
+    height: 30px; /* Tinggi efek fade */
     background: linear-gradient(to top, var(--bg--color), rgba(26,26,26,0));
-    pointer-events: none;
+    pointer-events: none; /* Agar tidak menghalangi klik pada teks di bawahnya */
     transition: opacity 0.3s ease-out;
 }
 
 .project-description.expanded {
-    max-height: 1000px; /* Large enough to show all content */
-    transition: max-height 0.5s ease-in;
-    overflow: visible;
+    max-height: 1000px; /* Tinggi yang cukup besar untuk menampilkan semua konten */
+    transition: max-height 0.5s ease-in; /* Animasi saat expanded */
+    overflow: visible; /* Pastikan semua teks terlihat */
 }
 
 .project-description.expanded::after {
-    opacity: 0; /* Hide fade effect when expanded */
+    opacity: 0; /* Sembunyikan efek fade saat expanded */
 }
 
 .read-more-btn {
@@ -392,7 +371,7 @@ section {
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    margin-top: auto; /* Pushes the button to the bottom of the flex container */
+    margin-top: auto; /* Mendorong tombol ke bagian bawah card (karena flex-direction column) */
     padding: 5px 0;
     border-bottom: 1px dashed var(--main-color);
     transition: color 0.3s ease, border-color 0.3s ease;
@@ -403,32 +382,29 @@ section {
     border-bottom-color: var(--text-color);
 }
 
-/* Hapus semua gaya Swiper utama karena tidak lagi digunakan */
-/* Pastikan tidak ada aturan CSS yang menarget .projects-carousel-container, .projects-swiper,
-   .swiper-button-next, .swiper-button-prev, .main-carousel-pagination, dll. */
-
-/* --- Modal (Pop-up) Styles --- */
+/* --- Modal (Pop-up) Styles (BARU DITAMBAHKAN/Diperbaiki) --- */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 10000;
+  display: none; /* Sembunyikan modal secara default */
+  position: fixed; /* Tetap di viewport saat discroll */
+  z-index: 10000; /* Pastikan di atas konten lain */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.9);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
+  overflow: auto; /* Aktifkan scroll jika konten modal terlalu besar */
+  background-color: rgba(0, 0, 0, 0.9); /* Latar belakang gelap */
+  backdrop-filter: blur(5px); /* Efek blur pada latar belakang */
+  -webkit-backdrop-filter: blur(5px); /* Kompatibilitas Safari */
+  justify-content: center; /* Untuk menengahkan konten modal secara horizontal */
+  align-items: center; /* Untuk menengahkan konten modal secara vertikal */
+  padding: 20px; /* Padding di sekitar modal content */
 }
 
-.modal-content-wrapper {
+/* Modal Content Wrapper */
+.modal-content { /* Nama kelas di HTML Anda adalah .modal-content, bukan .modal-content-wrapper */
   position: relative;
   background-color: var(--bg--color);
-  margin: auto;
+  margin: auto; /* Untuk menengahkan */
   padding: 30px;
   border-radius: 10px;
   max-width: 900px;
@@ -436,7 +412,7 @@ section {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
   animation-name: animatemodal;
   animation-duration: 0.4s;
-  display: flex;
+  display: flex; /* Gunakan flexbox untuk menata konten di dalam modal */
   flex-direction: column;
   gap: 20px;
 }
@@ -446,6 +422,7 @@ section {
   to {transform: scale(1); opacity: 1;}
 }
 
+/* Close Button */
 .close-button {
   color: var(--second-color);
   font-size: 40px;
@@ -455,6 +432,7 @@ section {
   right: 20px;
   cursor: pointer;
   transition: 0.3s;
+  line-height: 1; /* Pastikan tinggi baris normal untuk icon font */
 }
 
 .close-button:hover,
@@ -463,6 +441,7 @@ section {
   text-decoration: none;
 }
 
+/* Project Name in Modal */
 #modalProjectName {
   color: var(--main-color);
   font-size: var(--h2-font);
@@ -473,7 +452,7 @@ section {
 /* Swiper inside Modal Styles */
 .modal-swiper {
   width: 100%;
-  height: 400px;
+  height: 400px; /* Sesuaikan tinggi swiper di dalam modal */
   border-radius: 8px;
   overflow: hidden;
 }
@@ -482,38 +461,42 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0d0d0d;
+  background-color: #0d0d0d; /* Latar belakang slide */
 }
 
 .modal-swiper .swiper-slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: contain; /* Gambar akan discale agar muat, menjaga rasio aspek */
   border-radius: 8px;
 }
 
+/* Swiper Navigation (Prev/Next buttons) */
 .modal-swiper .swiper-button-next,
 .modal-swiper .swiper-button-prev {
-  color: var(--main-color);
-  font-size: 2.5rem;
-  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+  color: var(--main-color); /* Warna panah */
+  font-size: 2.5rem; /* Ukuran panah */
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); /* Bayangan agar lebih terlihat */
+  top: 50%; /* Tengah secara vertikal */
+  transform: translateY(-50%); /* Penyesuaian agar benar-benar di tengah */
+  /* Swiper sudah mengatur posisi kiri/kanan, tapi Anda bisa override jika perlu */
 }
 
 .modal-swiper .swiper-button-next:hover,
 .modal-swiper .swiper-button-prev:hover {
-  color: var(--text-color);
+  color: var(--text-color); /* Warna panah saat hover */
 }
 
+/* Swiper Pagination (dots) */
 .modal-swiper .swiper-pagination-bullet {
-  background: var(--second-color);
+  background: var(--second-color); /* Warna dot pagination */
   opacity: 0.8;
 }
 
 .modal-swiper .swiper-pagination-bullet-active {
-  background: var(--main-color);
+  background: var(--main-color); /* Warna dot pagination aktif */
   opacity: 1;
 }
-
 
 /* Services Section */
 .services {
@@ -581,20 +564,19 @@ section {
 
 /* Contact Section */
 .contact {
-  display: flex; /* Tetap flexbox untuk kontrol lebar */
-  flex-direction: column; /* Menyusun konten secara vertikal */
-  align-items: flex-start; /* Mengatur semua item ke kiri (flex-start) */
-  text-align: left; /* Mengatur teks utama ke kiri */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 
-  max-width: 900px; /* Lebar maksimum container, sedikit lebih lebar */
-  margin: 0 auto; /* Tetap pusatkan container di halaman */
-  padding: 40px 5%; /* Tambahkan padding agar ada ruang di sisi */
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 5%;
 }
 
-/* Sesuaikan contact-text */
 .contact-text {
     width: 100%;
-    text-align: left; /* Teks utama ke kiri */
+    text-align: left;
     margin-bottom: 20px;
 }
 
@@ -621,23 +603,20 @@ section {
   margin-bottom: 20px;
   padding-left: 0;
 
-  /* Menjadikan daftar lebih menyebar */
   display: flex;
-  flex-direction: row; /* Membuat item-item berjajar horizontal */
-  flex-wrap: wrap; /* Memungkinkan item turun ke baris baru jika tidak muat */
-  justify-content: flex-start; /* Memulai item dari kiri */
-  gap: 20px 40px; /* Spasi vertikal dan horizontal antar item */
-  width: 100%; /* Agar ul mengambil lebar penuh dan bisa menyebar */
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px 40px;
+  width: 100%;
 }
 
 .contact-list li {
-  margin-bottom: 0; /* Hapus margin-bottom yang lama, gunakan gap */
+  margin-bottom: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Item individu dimulai dari kiri */
-  /* width: auto; /* Biarkan lebar menyesuaikan konten */
-  flex-basis: auto; /* Atau bisa pakai flex-basis: 45%; untuk 2 kolom */
-  /* Sesuaikan flex-basis jika ingin kontrol lebih pada berapa item per baris */
+  justify-content: flex-start;
+  flex-basis: auto;
 }
 
 .contact-list li a {
@@ -646,7 +625,7 @@ section {
   transition: all .40s ease;
   display: flex;
   align-items: center;
-  white-space: nowrap; /* Mencegah teks terlalu cepat turun baris */
+  white-space: nowrap;
 }
 
 .contact-list li a:hover {
@@ -666,7 +645,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-shrink: 0; /* Mencegah ikon menyusut */
+  flex-shrink: 0;
 }
 
 .contact-list li a i:hover {
@@ -674,39 +653,170 @@ section {
   background: var(--main-color);
 }
 
-/* ... (Bagian CSS lainnya tetap sama) ... */
-
 /* Media Queries - Penyesuaian untuk Contact Section */
 @media (max-width: 768px) {
   .contact {
     padding: 40px 3%;
-    align-items: flex-start; /* Tetap rata kiri */
+    align-items: flex-start;
     text-align: left;
   }
 
   .contact-text {
-      text-align: left; /* Pastikan teks utama tetap rata kiri di mobile */
+      text-align: left;
   }
 
   .contact-list ul {
-    flex-direction: column; /* Jadikan vertikal di mobile */
-    align-items: flex-start; /* Rata kiri di mobile */
-    gap: 15px; /* Spasi vertikal di mobile */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
   }
 
   .contact-list li {
-    flex-direction: row; /* Pertahankan ikon dan teks sejajar di baris */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* Rata kiri di mobile */
+    justify-content: flex-start;
     width: auto;
   }
 
   .contact-list li a {
-    flex-direction: row; /* Pastikan ikon dan teks dalam link sejajar */
+    flex-direction: row;
   }
 
   .contact-list li a i {
-    margin-right: 10px; /* Jarak ikon-teks di mobile */
-    margin-bottom: 0; /* Pastikan tidak ada margin bawah */
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
+
+/* Responsive Navbar Toggle */
+@media (max-width: 992px) {
+  .navbar {
+    position: absolute;
+    top: 100%; /* Di bawah header */
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--bg--color);
+    border-top: 1px solid rgba(255, 115, 0, 0.2);
+    padding: 20px 5%;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); /* Sembunyikan secara default */
+    transition: clip-path 0.4s ease-out;
+  }
+
+  .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); /* Tampilkan */
+  }
+
+  .navbar li {
+    margin: 10px 0;
+  }
+
+  .navbar li a {
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  #menu-icon {
+    display: block;
+  }
+
+  .home-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px; /* Jarak dari header */
+  }
+
+  .home-text, .home-img {
+    flex: none; /* Hapus flex grow/shrink */
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .home-img {
+    order: -1; /* Pindahkan gambar ke atas di mobile */
+    margin-bottom: 30px;
+  }
+
+  .home-img img {
+    margin: 0 auto; /* Tengahkankan gambar */
+  }
+
+  .home-text h1 {
+    font-size: 2.8rem;
+  }
+
+  .home-text h4 {
+    font-size: 1.5rem;
+  }
+
+  .about {
+    grid-template-columns: 1fr; /* Satu kolom di mobile */
+    text-align: center;
+  }
+
+  .about-img {
+    margin: 0 auto; /* Tengahkankan gambar */
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-grid, .skills-content {
+    grid-template-columns: 1fr; /* Satu kolom di mobile */
+    gap: 10px;
+  }
+
+  .about-in h5, .edu-item h4, .skill-item h4 {
+    text-align: center;
+  }
+
+  .edu-item p, .skill-item p {
+    text-align: center;
+  }
+
+  .projects-content, .services-content {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Bisa 1 atau 2 kolom */
+  }
+
+  .proj-item {
+    min-height: auto; /* Biarkan tinggi menyesuaikan konten */
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --h1-font: 2.5rem;
+    --h2-font: 2rem;
+    --p-font: 1rem;
+  }
+
+  section {
+    padding: 100px 3% 50px;
+  }
+
+  .home-img img {
+    width: 250px;
+    height: 250px;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  .modal-swiper {
+    height: 300px;
+  }
+
+  .close-button {
+    font-size: 30px;
+    top: 5px;
+    right: 10px;
+  }
+
+  .modal-swiper .swiper-button-next,
+  .modal-swiper .swiper-button-prev {
+      font-size: 2rem;
   }
 }

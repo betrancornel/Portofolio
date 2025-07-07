@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet" />
-  
+
   <link rel="stylesheet" href="style.css" />
-  
+
   <title>Bertrand Cornelius Sianipar Portfolio</title>
 </head>
 <body>
@@ -90,15 +90,23 @@
       <h2>Projects</h2>
       <h4>My Hands-On Projects</h4>
     </div>
-    
+
     <div class="projects-content">
+
         <div class="proj-item">
             <img
-                src="img/cinemora/cinemora-1.png"
+                src="img/kp1.png"
                 alt="Cinemora - Short-Form Vertical Video Streaming Platform"
                 class="project-main-image"
                 data-project-name="Cinemora - Short-Form Vertical Video Streaming Platform"
-                data-images='["img/cinemora/cinemora-1.png", "img/cinemora/cinemora-2.png", "img/cinemora/cinemora-3.png", "img/cinemora/cinemora-4.png", "img/cinemora/cinemora-5.png"]'
+                data-images='[ "img/kp1/kp1-1.png",
+            "img/kp1/kp1-2.png",
+            "img/kp1/kp1-3.png",
+            "img/kp1/kp1-4.png",
+            "img/kp1/kp1-5.png",
+            "img/kp1/kp1-6.png",
+            "img/kp1/kp1-7.png",
+            "img/kp1/kp1-8.png"]'
             />
             <h3>Cinemora - Short-Form Vertical Video Streaming Platform</h3>
             <h4>Jun 2024 - Present</h4>
@@ -175,17 +183,17 @@
     </div>
     <div class="services-content">
       <div class="box">
-        <i class="ri-code-s-slash-line"></i> 
+        <i class="ri-code-s-slash-line"></i>
         <h3>Fullstack Web Development</h3>
         <p>Developing robust, scalable, and user-friendly web applications from frontend to backend, ensuring seamless integration and optimal performance.</p>
       </div>
       <div class="box">
-        <i class="ri-server-line"></i> 
+        <i class="ri-server-line"></i>
         <h3>Backend & API Development</h3>
         <p>Designing and implementing secure and efficient server-side logic, databases, and APIs using modern frameworks and best practices.</p>
       </div>
       <div class="box">
-        <i class="ri-brush-line"></i> 
+        <i class="ri-brush-line"></i>
         <h3>Frontend & UI/UX Design</h3>
         <p>Crafting intuitive and responsive user interfaces with a focus on aesthetic appeal and excellent user experience.</p>
       </div>
@@ -209,7 +217,20 @@
   </div>
 </section>
 
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="modalProjectName"></h2>
+        <div class="swiper-container modal-swiper">
+            <div id="modalSwiperWrapper" class="swiper-wrapper">
+                </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
   <script>
     // Responsive Navbar Toggle
@@ -224,7 +245,7 @@
 
     navbarItems.forEach(function(item) {
       item.addEventListener("click", function() {
-        navbar.classList.remove("active"); 
+        navbar.classList.remove("active");
       });
     });
 
